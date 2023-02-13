@@ -1,6 +1,5 @@
 import { Route, Navigate } from "react-router-dom";
 function renderRouter(router, index) {
-    console.log(router, index);
     // 如果遇到子路由，则调用自身的函数遍历子路由
     if (router.children) {
         return (
