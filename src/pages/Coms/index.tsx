@@ -59,6 +59,7 @@ const onchange =(ids:string[])=>{
                         isCheckAll
                         treeCheckStrictly
                         onChangeIds={onchange}
+                        deaultValue={['0-0-0']}
                     />
                 </Col>
             </Row>
