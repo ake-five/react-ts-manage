@@ -1,10 +1,26 @@
-import Home from "../pages/Home/list";
+import Home from "../pages/Layout";
 import Login from "../pages/Login";
+import Coms from "../pages/Coms";
 const routes = [
+    {
+        path: "/",
+        navigate: true,
+        redirect: "overview/coms",
+    },
+
     {
         path: "overview",
         component: <Home />,
-        children: [],
+        children: [
+            {
+                navigate: true,
+                redirect: "overview/coms",
+            },
+            {
+                path: "coms",
+                component: <Coms />,
+            },
+        ],
     },
     {
         path: "login",

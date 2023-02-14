@@ -15,11 +15,11 @@ function renderRouter(router, index) {
     // 如果遇到重定向，使用<Navigate to='' />直接跳转
     return (
         <Route
-            key={router.path}
+            key={router.path || router.redirect}
             path={router.path}
             element={
                 router.navigate ? (
-                    <Navigate to={router.redirect} />
+                    <Navigate to={`/${router.redirect}`} />
                 ) : (
                     router.component
                 )

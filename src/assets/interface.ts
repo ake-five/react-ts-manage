@@ -5,3 +5,11 @@ interface routeInterface {
 }
 
 export type RouteInterface = routeInterface;
+
+interface treeDataItem {
+    title: string;
+    value: string;
+    key: string;
+    children?: TreeDataItem[];
+}
+export type TreeDataItem = treeDataItem;
