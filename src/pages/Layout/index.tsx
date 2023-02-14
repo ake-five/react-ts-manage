@@ -3,20 +3,22 @@ import {
     MenuUnfoldOutlined,
     UserOutlined,
 } from "@ant-design/icons";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
+import cookies from 'react-cookies'
 import "@/styles/layout/layout.css";
 const { Header, Sider, Content } = Layout;
 
 const App: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
-    // useEffect(() => {
-    //     if (!cookies.load("token")) {
-    //         navigate("/login");
-    //     }
-    // });
+    const navigate =useNavigate()
+    useEffect(() => {
+        if (!cookies.load("token")) {
+            navigate("/login");
+        }
+    });
     const onclickMenuItem: MenuProps["onClick"] = ({ key }) => {
         console.log(key);
     };

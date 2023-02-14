@@ -45,7 +45,7 @@ const TreeSelectCom: React.FC<Iprops> = (props) => {
     const onChange = (newValue: string[]) => {
         setChecked(newValue.length === filterTreeDataKeys(treeData).length);
         setValue(newValue);
-        onChangeIds(newValue);
+        onChangeIds(newValue.map((i:any)=>i.value));
     };
     const onChangeCheck = (e: CheckboxChangeEvent) => {
         setChecked(e.target.checked);

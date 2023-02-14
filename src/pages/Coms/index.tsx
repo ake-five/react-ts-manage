@@ -47,7 +47,9 @@ const Coms: React.FC<Iprops> = () => {
             ],
         },
     ];
-
+const onchange =(ids:string[])=>{
+    console.log(ids)
+}
     return (
         <DocumentTitle title="示例组件">
             <Row>
@@ -56,6 +58,7 @@ const Coms: React.FC<Iprops> = () => {
                         treeData={treeData}
                         isCheckAll
                         treeCheckStrictly
+                        onChangeIds={onchange}
                     />
                 </Col>
             </Row>
