@@ -1,28 +1,33 @@
 import React, { useState } from "react";
 import { TreeSelect, Divider, Checkbox } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
-import { TreeDataItem } from "@/assets/interface";
 const { SHOW_ALL, SHOW_PARENT } = TreeSelect;
+interface treeDataItem {
+    title: string;
+    value: string;
+    key: string;
+    children?: treeDataItem[];
+}
 interface Iprops {
-    treeData: TreeDataItem[];
+    treeData: treeDataItem[];
     placeholderTitle?: string;
     onChangeIds?: (newValue: string[]) => void;
     deaultValue?: string[];
     isCheckAll?: boolean;
     treeCheckStrictly?: boolean;
 }
-const arrMethod = (arr) => {
-    if (!arr.length) return;
+const arrMethod = (arr: treeDataItem[]): string[] => {
+    if (!arr.length) return [];
     return arr.reduce(
-        (pre, cur) =>
+        (pre: any, cur: any) =>
             Array.isArray(cur) ? [...pre, ...arrMethod(cur)] : [...pre, cur],
         []
     );
 };
 
-const filterTreeDataKeys = (data: TreeDataItem[]) => {
+const filterTreeDataKeys = (data: treeDataItem[]): string[] => {
     return arrMethod(
-        data.map((item: TreeDataItem) => {
+        data.map((item: any) => {
             if (item.children) {
                 return [item.key, ...filterTreeDataKeys(item.children)];
             }
@@ -45,7 +50,7 @@ const TreeSelectCom: React.FC<Iprops> = (props) => {
     const onChange = (newValue: string[]) => {
         setChecked(newValue.length === filterTreeDataKeys(treeData).length);
         setValue(newValue);
-        onChangeIds(newValue.map((i:any)=>i.value));
+        onChangeIds(newValue.map((i: any) => i.value));
     };
     const onChangeCheck = (e: CheckboxChangeEvent) => {
         setChecked(e.target.checked);
@@ -68,7 +73,7 @@ const TreeSelectCom: React.FC<Iprops> = (props) => {
         style: {
             width: "100%",
         },
-        dropdownRender: (menu) => {
+        dropdownRender: (menu:any) => {
             return (
                 <div>
                     {isCheckAll ? (

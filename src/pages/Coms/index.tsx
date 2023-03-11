@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row } from "antd";
-import DocumentTitle from "react-document-title";
 import TreeSelect from "@/components/TreeSelect";
 interface Iprops {}
 const Coms: React.FC<Iprops> = () => {
@@ -47,11 +46,11 @@ const Coms: React.FC<Iprops> = () => {
             ],
         },
     ];
-const onchange =(ids:string[])=>{
-    console.log(ids)
-}
+    const onchange = (ids: string[]) => {
+        console.log(ids);
+    };
     return (
-        <DocumentTitle title="示例组件">
+        <div title="示例组件">
             <Row>
                 <Col span={6}>
                     <TreeSelect
@@ -63,7 +62,7 @@ const onchange =(ids:string[])=>{
                     />
                 </Col>
             </Row>
-        </DocumentTitle>
+        </div>
     );
 };
 export default Coms;
