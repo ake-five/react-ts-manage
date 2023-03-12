@@ -48,11 +48,11 @@ function BeforeEach(props: { route: routeType; children: any }) {
     if (props?.route?.meta?.title) {
         document.title = props.route.meta.title;
     }
-
-    if (props?.route?.meta?.needLogin) {
+    const token = localStorage.getItem("token");
+    if (props?.route?.meta?.needLogin || !token) {
         // 看是否登录
-        // const navigate = useNavigate();
-        // navigate('/login');
+        const navigate = useNavigate();
+        navigate(`/login`);
     }
 
     return <div>{props.children}</div>;

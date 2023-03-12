@@ -35,6 +35,13 @@ const routes: Array<routeType> = [
                 }
             },
         ]
+    },
+    {
+        path:"/login",
+        component: () => import('@/pages/Login'),
+        meta: {
+            title: "登录页",
+        }
     }
 ]
 
