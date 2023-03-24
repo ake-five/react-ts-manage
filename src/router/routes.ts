@@ -1,48 +1,46 @@
-
-
 export interface routeType {
-    path: string
-    component?: any
-    children?: Array<routeType>
+    path: string;
+    component?: any;
+    children?: Array<routeType>;
     meta?: {
-        title?: string
-        needLogin?: boolean
-    }
-    redirect?: string
+        title?: string;
+        needLogin?: boolean;
+    };
+    redirect?: string;
 }
 
 const routes: Array<routeType> = [
     {
-        path: '/',
-        component: () => import('@/layouts/layout'),
+        path: "/",
+        component: () => import("@/layouts/layout"),
         children: [
             {
-                path: '/',
-                redirect: '/home',
+                path: "/",
+                redirect: "/home",
             },
             {
-                path: '/home',
-                component: () => import('@/pages/Coms'),
+                path: "/home",
+                component: () => import("@/pages/Home"),
                 meta: {
                     title: "首页",
-                }
+                },
             },
             {
-                path: '/coms',
-                component: () => import('@/pages/Coms'),
+                path: "/coms",
+                component: () => import("@/pages/Coms"),
                 meta: {
                     title: "组件",
-                }
+                },
             },
-        ]
+        ],
     },
     {
-        path:"/login",
-        component: () => import('@/pages/Login'),
+        path: "/login",
+        component: () => import("@/pages/Login"),
         meta: {
             title: "登录页",
-        }
-    }
-]
+        },
+    },
+];
 
 export default routes;

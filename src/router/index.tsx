@@ -32,7 +32,7 @@ function renderRoutes(routes: Array<routeType>) {
 
         // children
         if (item?.children) {
-            res.children = renderRoutes(item.children);
+            (res as any).children = renderRoutes(item.children);
         }
 
         // 重定向
@@ -55,5 +55,5 @@ function BeforeEach(props: { route: routeType; children: any }) {
         navigate(`/login`);
     }
 
-    return <div>{props.children}</div>;
+    return <div style={{ height: "100%" }}>{props.children}</div>;
 }

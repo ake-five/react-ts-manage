@@ -1,38 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Layout, Menu, Breadcrumb, MenuProps } from "antd";
+import { Layout, Menu, MenuProps } from "antd";
 import menus from "./mens";
-const { Header, Content, Footer } = Layout;
+const { Content, Footer, Sider } = Layout;
+import Header from "@/components/Header";
 import "./layout.css";
-export default function Index(props:any) {
+// import img from "../assets/logo";
+export default function Index() {
+    const [collapsed, setCollapsed] = useState(false);
+    const [menuKey] = useState("home");
     const naviagtor = useNavigate();
     const onClick: MenuProps["onClick"] = (e: any) => {
         if (e.key) {
+            // setmenuKey(e.key);
             naviagtor(`/${e.key}`);
         }
     };
     return (
-        <Layout className="layout">
-            <Header>
+        <Layout style={{ minHeight: "100vh" }}>
+            <Sider
+                collapsible
+                collapsed={collapsed}
+                onCollapse={(value) => setCollapsed(value)}
+            >
+                {/* <img src={img} className="logo" /> */}
                 <div className="logo" />
                 <Menu
-                    onClick={onClick}
                     theme="dark"
-                    mode="horizontal"
+                    defaultSelectedKeys={[menuKey]}
+                    mode="inline"
                     items={menus}
+                    onClick={onClick}
                 />
-            </Header>
-            <Content style={{ padding: "0 50px" }}>
-                <Breadcrumb style={{ margin: "16px 0" }}>
-                    <Breadcrumb.Item>Layout</Breadcrumb.Item>
-                </Breadcrumb>
-                <div className="site-layout-content">
-                    <Outlet />
-                </div>
-            </Content>
-            <Footer style={{ textAlign: "center" }}>
-                React Vite components
-            </Footer>
+            </Sider>
+            <Layout className="site-layout">
+                <Header />
+                <Content style={{ margin: "16px" }}>
+                    <div
+                        className="site-layout-background"
+                        style={{ padding: 24, height: "100%" }}
+                    >
+                        <Outlet />
+                    </div>
+                </Content>
+                <Footer style={{ textAlign: "center" }}>
+                    react vite components
+                </Footer>
+            </Layout>
         </Layout>
     );
 }

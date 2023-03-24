@@ -1,0 +1,14 @@
+.ht-block {
+    height: 80px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+.icont {
+    font-size: 27px;
+}
+.dropdown {
+    cursor: pointer;
+}
