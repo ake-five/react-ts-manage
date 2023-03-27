@@ -29,3 +29,10 @@
     background: #fff;
     padding: 24px;
 }
+.layout-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    color: #fff;
+}

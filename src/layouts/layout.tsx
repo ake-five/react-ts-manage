@@ -1,21 +1,20 @@
-import React, { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Menu, MenuProps } from "antd";
 import menus from "./mens";
 const { Content, Footer, Sider } = Layout;
 import Header from "@/components/Header";
 import "./layout.css";
-// import img from "../assets/logo";
 export default function Index() {
-    const [collapsed, setCollapsed] = useState(false);
-    const [menuKey] = useState("home");
     const naviagtor = useNavigate();
+    const location = useLocation();
+    const [collapsed, setCollapsed] = useState(false);
     const onClick: MenuProps["onClick"] = (e: any) => {
         if (e.key) {
-            // setmenuKey(e.key);
             naviagtor(`/${e.key}`);
         }
     };
+
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <Sider
@@ -23,11 +22,17 @@ export default function Index() {
                 collapsed={collapsed}
                 onCollapse={(value) => setCollapsed(value)}
             >
-                {/* <img src={img} className="logo" /> */}
-                <div className="logo" />
+                {collapsed ? (
+                    <div className="layout-container">React.vite</div>
+                ) : (
+                    <div className="layout-container">
+                        欢迎登录 React.vite 练习项目
+                    </div>
+                )}
+
                 <Menu
                     theme="dark"
-                    defaultSelectedKeys={[menuKey]}
+                    defaultSelectedKeys={[location?.pathname.replace("/", "")]}
                     mode="inline"
                     items={menus}
                     onClick={onClick}

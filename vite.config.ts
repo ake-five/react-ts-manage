@@ -8,14 +8,6 @@ export default defineConfig({
             babel: {
                 plugins: ["@babel/plugin-transform-react-jsx"],
             },
-            build: {
-                rollupOptions: {
-                    input: [],
-                },
-            },
-            optimizeDeps: {
-                entries: [],
-            },
         }),
     ],
     resolve: {
@@ -25,6 +17,7 @@ export default defineConfig({
     },
     server: {
         // ← ← ← ← ← ←
+        port: 2023,
         host: "0.0.0.0", // ← 新增内容 ←
     },
     css: {
