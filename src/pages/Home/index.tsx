@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import style from "./index.css";
 
 const Home: React.FC = () => {
     return <div className="h-box"></div>;

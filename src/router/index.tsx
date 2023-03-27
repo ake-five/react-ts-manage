@@ -16,7 +16,11 @@ function renderRoutes(routes: Array<routeType>) {
         }
 
         let res: resType = { ...item };
-        if (!item?.path) return;
+        if (!item?.path)
+            return {
+                path: "/404",
+                meta: "404",
+            };
 
         // component
         if (item?.component) {
