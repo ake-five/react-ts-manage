@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Layout, Menu, MenuProps } from "antd";
-import menus from "./mens";
 const { Content, Footer, Sider } = Layout;
 import Header from "@/components/Header";
 import "./layout.css";
+import { useDispatch, useSelector } from "react-redux";
+import { rootState } from "@/store";
+import { IMenuActionType } from "@/store/reducer/menu";
 export default function Index() {
+    const {
+        menu: { menus },
+    } = useSelector((state: rootState) => state.menu);
+    const dispatch = useDispatch();
     const naviagtor = useNavigate();
     const location = useLocation();
     const [collapsed, setCollapsed] = useState(false);
@@ -14,7 +20,11 @@ export default function Index() {
             naviagtor(`/${e.key}`);
         }
     };
-
+    useEffect(() => {
+        dispatch({
+            type: IMenuActionType.INIT,
+        });
+    }, []);
     return (
         <Layout style={{ minHeight: "100vh" }}>
             <Sider
@@ -34,7 +44,7 @@ export default function Index() {
                     theme="dark"
                     defaultSelectedKeys={[location?.pathname.replace("/", "")]}
                     mode="inline"
-                    items={menus}
+                    items={menus || []}
                     onClick={onClick}
                 />
             </Sider>

@@ -1,38 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Tree, Table, Button } from "antd";
 import "./index.less";
 import { DownOutlined } from "@ant-design/icons";
 import type { TreeProps } from "antd/es/tree";
 import type { ColumnsType } from "antd/es/table";
 const { Sider, Content } = Layout;
-import menus from "@/layouts/mens";
 // import AceEditor from "@/components/AceEditor";
 import MackDown from "@/components/MackDown";
-interface routeType {
-    path: string;
-    component?: any;
-    children?: Array<routeType>;
-    meta: {
-        title: string;
-        needLogin?: boolean;
-    };
-    hidden?: boolean;
-
-    redirect?: string;
-}
-
+import { useDispatch, useSelector } from "react-redux";
+import { rootState } from "@/store";
+import { IMenuActionType } from "@/store/reducer/menu";
 interface DataType {
     key: string;
     name: string;
     title: string;
 }
 
-interface treeData {
-    key: string;
-    label: string;
-    children?: Array<treeData> | Array<routeType>;
-}
 const Home: React.FC = () => {
+    const {
+        menu: { treeData },
+    } = useSelector((state: rootState) => state.menu);
+    const dispatch = useDispatch();
     const columns: ColumnsType<DataType> = [
         {
             title: "Name",
@@ -48,36 +36,21 @@ const Home: React.FC = () => {
             key: "key",
         },
     ];
-    // const data: DataType[] = [];
-
     const onSelect: TreeProps["onSelect"] = (selectedKeys, info) => {
         setData([{ name: info.node.title, key: ` /${info.node.key} ` }]);
     };
-    const filterData = (treeData: treeData[]): any => {
-        return treeData.map((i) => {
-            if (i.children) {
-                return {
-                    key: i.key,
-                    title: i.label,
-                    children: i.children,
-                };
-            } else {
-                return {
-                    key: i.key,
-                    title: i.label,
-                };
-            }
-        });
-    };
+
     const [data, setData] = useState<any>(() => {
-        const node = filterData(menus)[0];
-        return [{ name: node.title, key: ` /${node.key} ` }];
+        return [];
     });
     const [defKeys] = useState<string[]>(() => {
-        const node = filterData(menus)[0];
-        return [node.key];
+        return [];
     });
-
+    useEffect(() => {
+        dispatch({
+            type: IMenuActionType.INITTREE,
+        });
+    }, []);
     return (
         <Layout className="layout">
             <Sider className="layout-sider">
@@ -86,7 +59,7 @@ const Home: React.FC = () => {
                     switcherIcon={<DownOutlined />}
                     defaultSelectedKeys={defKeys}
                     onSelect={onSelect}
-                    treeData={filterData(menus)}
+                    treeData={treeData}
                 />
             </Sider>
             <Content className="layoutcolor">
