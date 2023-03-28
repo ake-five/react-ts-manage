@@ -43,7 +43,7 @@ export default function Index() {
                 <Content style={{ margin: "16px" }}>
                     <div
                         className="site-layout-background"
-                        style={{ padding: 24, height: "100%" }}
+                        style={{ height: "100%" }}
                     >
                         <Outlet />
                     </div>
