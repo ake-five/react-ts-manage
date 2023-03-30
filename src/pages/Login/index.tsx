@@ -1,16 +1,22 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 const App: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [rtUrl, setRtUrl] = useState("");
     const onFinish = (values: any) => {
         localStorage.setItem("token", "loginToken");
-        navigate("/");
-    };
 
+        navigate(rtUrl === "/login" ? "/" : rtUrl);
+    };
+    useEffect(() => {
+        setRtUrl(location?.pathname);
+        location?.pathname !== "/login" && navigate("/login");
+    }, []);
     return (
         <div className="container">
             <Form
@@ -51,7 +57,6 @@ const App: React.FC = () => {
                         placeholder="Password"
                     />
                 </Form.Item>
-            
 
                 <Form.Item>
                     <Button

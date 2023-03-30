@@ -1,6 +1,8 @@
 import React from "react";
 import "./ht.css";
 import { CaretDownFilled } from "@ant-design/icons";
+import { useLocation } from "react-router-dom";
+
 import type { MenuProps } from "antd";
 import { Dropdown, Space, Button } from "antd";
 interface IProps {
@@ -13,6 +15,9 @@ const items: MenuProps["items"] = [
     },
 ];
 const HomeTop: React.FC = (props: IProps) => {
+    const location = useLocation();
+    console.log(location);
+
     return (
         <div className="ht-block">
             <div></div>

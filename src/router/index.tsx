@@ -1,9 +1,9 @@
 import React from "react";
-import { useRoutes, useNavigate, Navigate } from "react-router-dom";
+import { useRoutes, Navigate } from "react-router-dom";
 import routes, { routeType } from "./routes";
 import { Spin } from "antd";
 import _ from "lodash";
-
+import Login from "@/pages/Login";
 export default function Routes() {
     const element = useRoutes(renderRoutes(routes));
     return element;
@@ -55,8 +55,7 @@ function BeforeEach(props: { route: routeType; children: any }) {
     const token = localStorage.getItem("token");
     if (props?.route?.meta?.needLogin || !token) {
         // 看是否登录
-        const navigate = useNavigate();
-        navigate(`/login`);
+        return <Login />;
     }
 
     return <div style={{ height: "100%" }}>{props.children}</div>;
