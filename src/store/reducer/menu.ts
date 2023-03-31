@@ -2,6 +2,8 @@ import menus from "@/router/routes";
 export interface IMenus {
     menus: any;
     treeData: treeData[];
+    loading: Boolean;
+    defaultSelectedKeys: string[];
 }
 interface routeType {
     path: string;
@@ -27,6 +29,8 @@ const initMenuState: IState = {
     menu: {
         menus: [],
         treeData: [],
+        loading: false,
+        defaultSelectedKeys: [],
     },
 };
 
@@ -68,6 +72,7 @@ export enum IMenuActionType {
     CHANGE,
     INIT,
     INITTREE,
+    SETLOADING,
 }
 const menu = (
     state: IState = initMenuState,
@@ -81,15 +86,26 @@ const menu = (
                 ...state,
                 menu: {
                     ...state.menu,
-                    menus: filterMenus((menus[0] as any).children),
+                    menus: [...filterMenus((menus[0] as any).children)],
                 },
             };
         case IMenuActionType.INITTREE:
+            const treeData = [...filterData(state.menu.menus)];
             return {
                 ...state,
                 menu: {
                     ...state.menu,
-                    treeData: filterData(state.menu.menus),
+                    treeData,
+                    loading: false,
+                    defaultSelectedKeys: [treeData[0]?.key],
+                },
+            };
+        case IMenuActionType.SETLOADING:
+            return {
+                ...state,
+                menu: {
+                    ...state.menu,
+                    loading: action.payload.loading,
                 },
             };
         default:

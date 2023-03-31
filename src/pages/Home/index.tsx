@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Tree, Table, Button } from "antd";
+import { Layout, Tree, Table, Button, Spin } from "antd";
 import "./index.less";
 import { DownOutlined } from "@ant-design/icons";
 import type { TreeProps } from "antd/es/tree";
@@ -18,7 +18,7 @@ interface DataType {
 
 const Home: React.FC = () => {
     const {
-        menu: { treeData },
+        menu: { treeData, menus, defaultSelectedKeys },
     } = useSelector((state: rootState) => state.menu);
     const dispatch = useDispatch();
     const columns: ColumnsType<DataType> = [
@@ -43,23 +43,29 @@ const Home: React.FC = () => {
     const [data, setData] = useState<any>(() => {
         return [];
     });
-    const [defKeys] = useState<string[]>(() => {
-        return [];
-    });
+
     useEffect(() => {
+        if (!menus.length) return;
+        dispatch({
+            type: IMenuActionType.SETLOADING,
+            payload: {
+                loading: true,
+            },
+        });
         dispatch({
             type: IMenuActionType.INITTREE,
         });
-    }, []);
+    }, [menus]);
+
     return (
         <Layout className="layout">
             <Sider className="layout-sider">
                 <Tree
                     showLine
                     switcherIcon={<DownOutlined />}
-                    defaultSelectedKeys={defKeys}
+                    defaultSelectedKeys={defaultSelectedKeys}
                     onSelect={onSelect}
-                    treeData={treeData}
+                    treeData={[...treeData] || []}
                 />
             </Sider>
             <Content className="layoutcolor">
@@ -72,10 +78,10 @@ const Home: React.FC = () => {
                 <div className="layoutAce">
                     <MackDown />
                 </div>
-                <div className="layoutFooter">
+                {/* <div className="layoutFooter">
                     <Button type="primary">保存</Button>
                     <Button style={{ marginRight: "16px" }}>撤回</Button>
-                </div>
+                </div> */}
             </Content>
         </Layout>
     );

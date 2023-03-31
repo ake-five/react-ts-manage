@@ -36,3 +36,7 @@
     height: 60px;
     color: #fff;
 }
+.ant-spin-container,
+.ant-spin-nested-loading {
+    height: 100%;
+}

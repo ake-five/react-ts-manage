@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { Layout, Menu, MenuProps } from "antd";
+import { Layout, Menu, MenuProps, Spin } from "antd";
 const { Content, Footer, Sider } = Layout;
 import Header from "@/components/Header";
 import "./layout.css";
@@ -9,7 +9,7 @@ import { rootState } from "@/store";
 import { IMenuActionType } from "@/store/reducer/menu";
 export default function Index() {
     const {
-        menu: { menus },
+        menu: { menus, loading },
     } = useSelector((state: rootState) => state.menu);
     const dispatch = useDispatch();
     const naviagtor = useNavigate();
@@ -42,7 +42,9 @@ export default function Index() {
 
                 <Menu
                     theme="dark"
-                    defaultSelectedKeys={[location?.pathname.replace("/", "")]}
+                    defaultSelectedKeys={[
+                        location?.pathname.replace("/", "") || "home",
+                    ]}
                     mode="inline"
                     items={menus || []}
                     onClick={onClick}
@@ -55,7 +57,9 @@ export default function Index() {
                         className="site-layout-background"
                         style={{ height: "100%" }}
                     >
-                        <Outlet />
+                        <Spin spinning={loading} delay={500}>
+                            <Outlet />
+                        </Spin>
                     </div>
                 </Content>
                 <Footer style={{ textAlign: "center" }}>
