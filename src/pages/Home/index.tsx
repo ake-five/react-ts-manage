@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Tree, Table, Button, Spin } from "antd";
+import { Layout, Tree, Table } from "antd";
 import "./index.less";
 import { DownOutlined } from "@ant-design/icons";
 import type { TreeProps } from "antd/es/tree";
 import type { ColumnsType } from "antd/es/table";
 const { Sider, Content } = Layout;
 // import AceEditor from "@/components/AceEditor";
-import MackDown from "@/components/MackDown";
+// import MackDown from "@/components/MackDown";
 import { useDispatch, useSelector } from "react-redux";
 import { rootState } from "@/store";
 import { IMenuActionType } from "@/store/reducer/menu";
@@ -75,9 +75,7 @@ const Home: React.FC = () => {
                     bordered
                     pagination={false}
                 />
-                <div className="layoutAce">
-                    <MackDown />
-                </div>
+                <div className="layoutAce">{/* <MackDown /> */}</div>
                 {/* <div className="layoutFooter">
                     <Button type="primary">保存</Button>
                     <Button style={{ marginRight: "16px" }}>撤回</Button>
