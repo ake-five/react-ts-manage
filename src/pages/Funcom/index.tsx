@@ -1,36 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Breadcrumb, Layout, Menu } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
-import {
-    LaptopOutlined,
-    NotificationOutlined,
-    UserOutlined,
-} from "@ant-design/icons";
 import type { MenuProps } from "antd";
 const Funcom: React.FC = () => {
-    const items2: MenuProps["items"] = [
-        UserOutlined,
-        LaptopOutlined,
-        NotificationOutlined,
-    ].map((icon, index) => {
+    const items2: MenuProps["items"] = ["Countdown"].map((icon, index) => {
         const key = String(index + 1);
 
         return {
             key: `sub${key}`,
             icon: React.createElement(icon),
-            label: `subnav ${key}`,
-
-            children: new Array(4).fill(null).map((_, j) => {
-                const subKey = index * 4 + j + 1;
-                return {
-                    key: subKey,
-                    label: `option${subKey}`,
-                };
-            }),
+            label: icon,
         };
     });
     return (
-        <Layout >
+        <Layout>
             <Sider width={200}>
                 <Menu
                     mode="inline"
@@ -40,7 +23,11 @@ const Funcom: React.FC = () => {
                     items={items2}
                 />
             </Sider>
-            <Content style={{ height: "100%" }}>Content</Content>
+            <div style={{ height: "100%", padding: "0 16px", width: "100%" }}>
+                <Content
+                    style={{ height: "100%", padding: "0 16px" }}
+                ></Content>
+            </div>
         </Layout>
     );
 };
