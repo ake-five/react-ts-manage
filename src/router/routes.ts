@@ -47,6 +47,13 @@ const routes: Array<routeType> = [
                     title: "路由列表",
                 },
             },
+            {
+                path: "/funcom",
+                component: () => import("@/pages/Funcom"),
+                meta: {
+                    title: "美团面试题记录",
+                },
+            },
         ],
     },
     {
