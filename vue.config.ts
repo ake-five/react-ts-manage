@@ -1,6 +1,6 @@
 'use strict'
 
-const { name } = require('./package.json')
+const { name:pageNmae } = require('./package.json')
 const path = require('path')
 // const { webpack: AutoImportPlugin } = require('@jd/tpaas-autoimport')
 
@@ -9,17 +9,13 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath: `/${name}/`,
+  publicPath: `/${pageNmae}/`,
   assetsDir: 'static',
   outputDir: 'dist',
   lintOnSave: false,
   parallel: false,
   productionSourceMap: false,
   transpileDependencies: [
-    '@jd/tpaas-utils',
-    '@jd/tpaas-http',
-    '@jd/tpaas-plugin',
-    '@jd/tpaas-shared',
   ],
   configureWebpack: {
     resolve: {
@@ -29,9 +25,9 @@ module.exports = {
     },
     output: {
       // 把子应用打包成 umd 库格式
-      library: `${name}-[name]`,
+      library: `${pageNmae}-[name]`,
       libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp-${name}`,
+      jsonpFunction: `webpackJsonp-${pageNmae}`,
     },
     devtool: process.env.NODE_ENV === 'development' ? 'source-map' : undefined,
     performance: {
