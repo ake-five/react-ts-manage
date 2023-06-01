@@ -58,5 +58,5 @@ function BeforeEach(props: { route: routeType; children: any }) {
         return <Login />;
     }
 
-    return <div style={{ height: "100%" }}>{props.children}</div>;
+    return <div style={{ height: "100%" ,overflow:'auto'}}>{props.children}</div>;
 }
