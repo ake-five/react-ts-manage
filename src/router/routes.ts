@@ -9,7 +9,7 @@ export interface routeType {
     hidden?: boolean;
     redirect?: string;
 }
-
+import RouteMenus from "./routeMenu";
 const routes: Array<routeType> = [
     {
         path: "/",
@@ -26,27 +26,7 @@ const routes: Array<routeType> = [
                     title: "重定向到首页",
                 },
             },
-            {
-                path: "/home",
-                component: () => import("@/pages/Home"),
-                meta: {
-                    title: "首页",
-                },
-            },
-            {
-                path: "/coms",
-                component: () => import("@/pages/Coms"),
-                meta: {
-                    title: "组件",
-                },
-            },
-            {
-                path: "/routes",
-                component: () => import("@/pages/Routers"),
-                meta: {
-                    title: "路由列表",
-                },
-            },
+            ...RouteMenus,
         ],
     },
     {
