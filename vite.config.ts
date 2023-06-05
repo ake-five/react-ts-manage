@@ -1,6 +1,7 @@
 // vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import WindiCSS from 'vite-plugin-windicss'
 
 import typescript from "@rollup/plugin-typescript";
 import { readFileSync } from "fs";
@@ -21,6 +22,7 @@ export default defineConfig({
                 plugins: ["@babel/plugin-transform-react-jsx"],
             },
         }),
+        WindiCSS()
         // typescript({
         //     target: "es5",
         //     rootDir: path.resolve("src/"),
