@@ -1,5 +1,5 @@
 import React from "react";
-import { useRoutes, Navigate } from "react-router-dom";
+import { useRoutes, Navigate,useNavigate } from "react-router-dom";
 import routes, { routeType } from "./routes";
 import { Spin } from "antd";
 import _ from "lodash";
@@ -10,6 +10,7 @@ export default function Routes() {
 }
 
 function renderRoutes(routes: Array<routeType>) {
+    const navigate = useNavigate();
     return _.map(routes, (item: routeType) => {
         interface resType extends routeType {
             element?: any;
@@ -28,7 +29,7 @@ function renderRoutes(routes: Array<routeType>) {
             res.element = (
                 <React.Suspense fallback={<Spin size="large" />}>
                     <BeforeEach route={item}>
-                        <Component />
+                        <Component navigate={navigate}/>
                     </BeforeEach>
                 </React.Suspense>
             );

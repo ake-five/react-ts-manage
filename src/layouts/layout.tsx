@@ -7,6 +7,8 @@ import "./layout.css";
 import { useDispatch, useSelector } from "react-redux";
 import { rootState } from "@/store";
 import { IMenuActionType } from "@/store/reducer/menu";
+
+
 export default function Index() {
     const {
         menu: { menus, loading },

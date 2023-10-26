@@ -2,9 +2,9 @@
     "name": "@react-gmm/vite-react-dome-test",
     "version": "0.0.1",
     "type": "module",
-    "main": "./dist/main.cjs",
-    "module": "./dist/main.js",
-    "types": "./dist/index.d.ts",
+    "main": "dist/main.cjs",
+    "module": "dist/main.js",
+    "types": "dist/index.d.ts",
     "keywords": [
         "vite-react-dome"
     ],
@@ -21,17 +21,27 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@babel/core": "^7.22.6",
         "@babel/plugin-transform-react-jsx": "^7.21.0",
+        "@babel/preset-env": "^7.22.6",
+        "@babel/preset-react": "^7.22.5",
         "@rollup/plugin-typescript": "^11.1.0",
         "@types/node": "^18.15.0",
         "ace-builds": "^1.16.0",
         "antd": "4.24.1",
+        "babel-loader": "^9.1.2",
+        "css-loader": "^6.8.1",
         "js-methods-npm": "^1.0.2",
         "lodash": "^4.17.21",
+        "qiankun": "^2.10.11",
         "react-ace": "^10.1.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.9.0",
-        "react-to-print": "^2.14.12"
+        "react-to-print": "^2.14.12",
+        "sass-loader": "^13.3.2",
+        "style-loader": "^3.3.3",
+        "webpack": "^5.88.1",
+        "webpack-cli": "^5.1.4"
     },
     "devDependencies": {
         "@types/lodash": "^4.14.191",

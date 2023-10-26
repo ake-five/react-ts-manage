@@ -31,7 +31,21 @@ export default [
         path: "/funcom",
         component: () => import("@/pages/Funcom"),
         meta: {
-            title: "美团面试题记录",
+            title: "打印组件",
+        },
+    },
+    {
+        path: "/table",
+        component: () => import("@/pages/Tetris"),
+        meta: {
+            title: "table合并",
+        },
+    },
+    {
+        path: "/classroute",
+        component: () => import("@/pages/ClassRoute"),
+        meta: {
+            title: "测试类组件跳转路由",
         },
     },
 ];
