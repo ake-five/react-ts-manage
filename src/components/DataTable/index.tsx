@@ -73,7 +73,7 @@ function table(props: Iprops) {
           {record.oneItem.indicatorName}
         </span>
       ),
-      onCell: (_, index: number) => {
+      onCell: (_, index: any) => {
         return {
           rowSpan:dataConfig.onespan[index]
         }
@@ -87,7 +87,7 @@ function table(props: Iprops) {
           {record.twoItem.indicatorName}
         </span>
       ),
-      onCell: (_, index: number) => {
+      onCell: (_, index: any) => {
         return {
           rowSpan:dataConfig.towspan[index]
         }
