@@ -27,13 +27,15 @@ interface Iprops {
   data: Indicator[]
 }
 interface Config {
-  towspan?: number[],
-  onespan?: number[],
+  (itm: Indicator, idx: number, data: Indicator[]): boolean,
+}
+interface FunctionWithNumberArray {
+  (rulesFun: (itm: Indicator, idx: number, data: Indicator[])=> boolean): number[];
 }
 
 function table(props: Iprops) {
 
-  const spansFilter = (rulesFun:any) => {
+  const spansFilter: FunctionWithNumberArray = (rulesFun: Config) => {
     let pos = 0
     const spanArr: number[] = []
     const data = props.data || []
@@ -42,7 +44,7 @@ function table(props: Iprops) {
         spanArr.push(1)
         return
       }
-      if (rulesFun(itm,idx,data)) {
+      if (rulesFun(itm, idx, data)) {
         spanArr[pos] = spanArr[pos] + 1
         spanArr.push(0)
         return
@@ -53,10 +55,10 @@ function table(props: Iprops) {
     return spanArr
   }
   const dataConfig = (() => {
-    const oneRule  =(itm:Indicator,idx:number,data:Indicator[])=>{
+    const oneRule = (itm: Indicator, idx: number, data: Indicator[]) => {
       return (itm?.twoItem as any).parentId === (data[idx - 1] as any)?.oneItem.indicatorId
     }
-    const towRule  =(itm:Indicator,idx:number,data:Indicator[])=>{
+    const towRule = (itm: Indicator, idx: number, data: Indicator[]) => {
       return itm.parentId === (data[idx - 1] as any)?.twoItem.indicatorId
     }
     return {
@@ -75,7 +77,7 @@ function table(props: Iprops) {
       ),
       onCell: (_, index: number) => {
         return {
-          rowSpan:dataConfig.onespan[index]
+          rowSpan: dataConfig.onespan[index]
         }
       }
     },
@@ -89,7 +91,7 @@ function table(props: Iprops) {
       ),
       onCell: (_, index: number) => {
         return {
-          rowSpan:dataConfig.towspan[index]
+          rowSpan: dataConfig.towspan[index]
         }
       }
     },
