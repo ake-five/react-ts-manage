@@ -48,4 +48,11 @@ export default [
             title: "测试类组件跳转路由",
         },
     },
+    {
+        path: "/searcList",
+        component: () => import("@/pages/SearcList"),
+        meta: {
+            title: "列表模糊搜索",
+        },
+    },
 ];
