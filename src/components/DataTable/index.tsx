@@ -22,7 +22,7 @@ interface Indicator {
 }
 interface Iprops {
   data: Indicator[]
-  tableSpanNumber: number
+  tableChildrenMapNumber: number
   filterDataConfig: (dataConfig: any) => void
   columns: ColumnsType<Indicator>
 }
@@ -80,14 +80,14 @@ function table(props: Iprops) {
 
       const parents = itm.parents
       const sParents = data[idx - 1].parents
-      if (spanIndex < props.tableSpanNumber) {
+      if (spanIndex < props.tableChildrenMapNumber) {
         return (parents[spanIndex] as any)?.parentId === sParents[spanIndex - 1]?.indicatorId
       }
       return itm.parentId === sParents[sParents.length - 1]?.indicatorId
     }
 
     const spansObj = {}
-    for (let index = 1; index <= props.tableSpanNumber; index++) {
+    for (let index = 1; index <= props.tableChildrenMapNumber; index++) {
       const spanIndex = index
       Object.assign(spansObj, { [`span${spanIndex}`]: spansFilter(rule, spanIndex) })
     }

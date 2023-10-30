@@ -71,7 +71,7 @@ function App() {
     return (
         <div title="合并行">
 
-            <DataTable columns={columns} data={dataJson.data} tableSpanNumber={2} filterDataConfig={filterData} />
+            <DataTable columns={columns} data={dataJson.data} tableChildrenMapNumber={2} filterDataConfig={filterData} />
         </div>
     );
 }
