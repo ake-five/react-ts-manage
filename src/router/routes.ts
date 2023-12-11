@@ -20,7 +20,7 @@ const routes: Array<routeType> = [
         children: [
             {
                 path: "/",
-                redirect: "/home",
+                redirect: "/layout/home",
                 hidden: true,
                 meta: {
                     title: "重定向到首页",
