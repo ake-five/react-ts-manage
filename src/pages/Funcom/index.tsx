@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import Printing from "@/components/Printing/index.tsx";
+// import Printing from "@/components/Printing/index.tsx";
 const Funcom: React.FC = () => {
     interface DataType {
         key: string;
@@ -55,7 +55,7 @@ const Funcom: React.FC = () => {
 
     return (
         <div>
-            <Printing columns={columns} data={data}></Printing>
+            {/* <Printing columns={columns} data={data}></Printing> */}
             <Table columns={columns} dataSource={data} pagination={false} />
         </div>
     );

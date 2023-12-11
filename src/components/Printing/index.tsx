@@ -37,9 +37,9 @@ const Printing: React.FC<Iprops> = (props) => {
     }, []);
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
-        printOptions: () => {
-            return { documentTitle: "打印标题" };
-        },
+        // printOptions: () => {
+        //     return { documentTitle: "打印标题" };
+        // },
     });
 
     return (
