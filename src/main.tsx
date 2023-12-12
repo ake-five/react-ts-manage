@@ -21,7 +21,7 @@ import { Provider } from "react-redux";
 //     // 添加其他子应用的配置...
 // ];
 
-// registerMicroApps(apps);
+// registerMicroApps(apps);111
 
 // start();
 
