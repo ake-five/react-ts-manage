@@ -20,7 +20,7 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
+        "deploy": "npm run build && gh-pages -d build"
     },
     "private": false,
     "homepage": "https://ake-five.github.io/react-ts-manage/",
