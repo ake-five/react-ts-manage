@@ -1,0 +1,1 @@
+import{R as e}from"./index-ac12e243.js";const t=()=>e.createElement("div",{className:"container"},e.createElement("div",{className:"aa"}),e.createElement("div",{className:"bb"}),e.createElement("div",{className:"cc"}));export{t as default};

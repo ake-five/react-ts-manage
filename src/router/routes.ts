@@ -30,7 +30,7 @@ const routes: Array<routeType> = [
         ],
     },
     {
-        path: "/login",
+        path: "/react-ts-manage/login",
         component: () => import("@/pages/Login"),
         meta: {
             title: "登录页",

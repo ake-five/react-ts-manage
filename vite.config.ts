@@ -2,11 +2,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import WindiCSS from 'vite-plugin-windicss'
-
+const { REACT_APP_PUBLIC_PATH } = process.env
 import path from "path";
+console.log(process.env);
 
 
 export default defineConfig({
+    base: REACT_APP_PUBLIC_PATH && `${REACT_APP_PUBLIC_PATH}/`,
     plugins: [
         react({
             babel: {
