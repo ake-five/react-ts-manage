@@ -11,7 +11,7 @@ console.log('min');
 const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename='react-ts-manage'>
             <div style={{ height: "100%" }}>
                 <Routes />
             </div>
