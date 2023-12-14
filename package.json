@@ -22,7 +22,8 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
-    "homepage": "./",
+    "private": false,
+    "homepage": "https://ake-five.github.io/react-ts-manage/",
     "dependencies": {
         "@babel/core": "^7.22.6",
         "@babel/plugin-transform-react-jsx": "^7.21.0",
