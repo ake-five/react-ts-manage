@@ -8,7 +8,11 @@ console.log(process.env);
 
 
 export default defineConfig({
-    base: REACT_APP_PUBLIC_PATH && `${REACT_APP_PUBLIC_PATH}/`,
+    // publicPath: REACT_APP_PUBLIC_PATH && `${REACT_APP_PUBLIC_PATH}/` || '',
+    base: 'react-ts-manage',
+    build: {
+        outDir: "docs"
+    },
     plugins: [
         react({
             babel: {

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { rootState } from "@/store";
 import { IMenuActionType } from "@/store/reducer/menu";
 
+console.log('route');
 
 export default function Index() {
     // const { REACT_APP_PUBLIC_PATH } = (process?.env as any)
