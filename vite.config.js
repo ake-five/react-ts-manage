@@ -17,14 +17,7 @@ export default defineConfig({
         //     fileName: (format) => `micro-app.${format}.js`, // 输出的文件名
         // },
         rollupOptions: {
-            external: ['react', 'react-dom'], // 将 react 和 react-dom 指定为外部依赖，以避免重复打包
             output: {
-                // 这里可以根据需要设置一些 rollup 的输出选项
-                // 例如：globals、format、sourcemap 等
-                globals: {
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                },
                 library: `${packageName}-[name]`,
                 libraryTarget: 'umd',
                 jsonpFunction: `webpackJsonp_${packageName}`,
