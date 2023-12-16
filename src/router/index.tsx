@@ -53,7 +53,7 @@ function BeforeEach(props: { route: routeType; children: any }) {
     if (props?.route?.meta?.title) {
         document.title = props.route.meta.title;
     }
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     if (props?.route?.meta?.needLogin || !token) {
         // 看是否登录
         return <Login />;

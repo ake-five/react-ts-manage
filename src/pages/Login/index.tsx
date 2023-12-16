@@ -8,8 +8,8 @@ const App: React.FC = () => {
     const [rtUrl, setRtUrl] = useState("");
     const handleLogin = (username: string, password: string) => {
         // 处理登录事件
-        localStorage.setItem("token", "loginToken");
-        localStorage.setItem(
+        sessionStorage.setItem("token", "loginToken");
+        sessionStorage.setItem(
             "user",
             `{username:${username},password:${password}}`
         );
