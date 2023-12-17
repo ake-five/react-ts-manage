@@ -50,7 +50,7 @@ export default function Index() {
                     <Menu
                         theme="dark"
                         defaultSelectedKeys={[
-                            location?.pathname.replace("/", "") || "home",
+                            location?.pathname.replace("/", "") || "coms",
                         ]}
                         mode="inline"
                         items={menus || []}
