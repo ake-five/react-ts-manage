@@ -20,10 +20,10 @@ const routes: Array<routeType> = [
         children: [
             {
                 path: "/",
-                redirect: "/layout/home",
+                redirect: "/layout/coms",
                 hidden: true,
                 meta: {
-                    title: "重定向到首页",
+                    title: "重定向",
                 },
             },
             ...RouteMenus,
